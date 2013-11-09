@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wala</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/popup.css" rel="stylesheet" media="screen">
+    <link href="/css/reveal.css" rel="stylesheet" media="screen">
+    <link href="/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" media="screen">
+    <script src="/js/jquery-1.8.js"></script>
+    <link href="/css/backend_layout.css" rel="stylesheet" media="screen">
+    <!--<link rel="icon" type="image/png" href="http://{{ app.request.host }}/img/favicon.png">-->
+    <!--<link rel="shortcut icon" href="http://{{ app.request.host }}/img/favicon.png" type="image/png"> -->
+</head>
+<body>
+	{% block content %}{% endblock %}
+	<script src="/js/popup/jquery.reveal.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<!--<script src="/js/walajs/wala.js"></script>-->
+	{% block before_footer %}{% endblock %}
+</body>
+</html>

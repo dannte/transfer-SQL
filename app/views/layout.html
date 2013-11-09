@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Transfer Sql</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/style/mobile.css" rel="stylesheet" media="screen">
+    <link href="/css/bootstrap/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="/css/bootstrap/bootstrap-select.css" rel="stylesheet" media="screen">
+    <link href="/css/bootstrap/bootstrap-theme.css" rel="stylesheet" media="screen">
+    <link href="/css/style/style.css" rel="stylesheet" media="screen">
+    
+    <script src="/js/style/modernizer.js"></script>
+    <script src="/js/jquery/jquery-1.9.1.js"></script>
+    <link rel="icon" type="image/png" href="/img/style/favicon.ico">
+    <link rel="shortcut icon" href="/img/style/favicon.ico" type="image/png">
+
+  </head>
+  <body style="background-image:url(/img/style/Water-Background-medium-Gradient.jpg)" class="home">
+  <nav id="web-nav">
+      <div class="col-md-12">
+          <div class="btn-toolbar connect-button">
+              <div class="btn-group">
+                  <a data-toggle="modal" href="#myModal" class="btn btn-danger">Add connections</a>
+              </div>
+          </div>
+      </div>
+      <ul id="menu">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li class="subs work-menu show-subs">
+            <a class="main-link">Work</a>
+            <ul class="link-subs">
+                <li>
+                    <a href="#">Film</a>
+                </li>
+                <li>
+                    <a href="#">Photos</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">About</a>
+        </li>
+        <li>
+            <a href="#">Blog</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+      </ul>
+      <ul id="address">
+        <li>Mammoth Media</li>
+        <li>11 SW 3RD ST, APT A</li>
+        <li>LEE'S SUMMIT MO 64063</li>
+        <li></li>
+        <li>P: 816.507.4644</li>
+      </ul>
+  </nav>
+  <nav id="mobile-nav">
+      <a href="#">
+          <img class="logo" src=""/>
+      </a>
+      <img class="drop-nav" src=""/>
+  </nav>
+  <nav id="mobile-expand">
+      <img class="logo" src=""/>
+      <img class="close" src=""/>
+      <div id="hidden-nav"></div>
+      <ul id="menu">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Work</a>
+        </li>
+        <li>
+            <a href="#">About</a>
+        </li>
+        <li>
+            <a href="#">Blog</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+        <ul class="work-subs">
+          <li>
+              <a href="#">Film</a>
+          </li>
+          <li>
+              <a href="#">Photos</a>
+          </li>
+        </ul>
+      </ul>
+  </nav>
+  <div id="wrap">
+    {% include 'frontend/connect_form.html' %}
+     
+    {% block content %}{% endblock %}
+  </div>
+  <div id="footer">
+        {% block footer %}{% endblock %}
+  </div><!-- #footer -->
+    <script src="/js/bootstrap/bootstrap.js"></script>
+    <script src="/js/bootstrap/bootstrap-select.js"></script>
+    <script src="/js/style/infinitescroll.js"></script>
+    <script src="/js/style/script.js"></script>
+    <script src="/js/style/modal_windows.js"></script>
+  </body>
+</html>

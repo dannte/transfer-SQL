@@ -1,0 +1,209 @@
+{% extends "backend_layout.html" %}
+{% block content %}
+<div id="dialog-modal" title="Basic modal dialog" style="display: none;">
+    <div class=" form-element" style="width: 100%;">
+        <button type="button" id="select-all"><span id="text-button">Select all</span></button>
+    </div>
+    <div class="report-page row-fluid">
+        <form method="post" action="/stat/customized_report" id="report">
+        <div class="row-fluid">
+            <div class="span4">
+          {% for i in customized_report %}
+            <label class="checkbox">
+                <input type="checkbox" name="question[]"   value="{{ i.1 }}">{{ i.0 }}
+            </label>
+          {% if loop.index % columns == 0 %}
+            </div> <div class="span4">
+          {% endif %}
+          {% endfor %}
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+<div id="dialog-modal-people" title="Basic modal dialog" style="display: none;">
+    <div class="form-element" style="width: 100%;">
+        <button type="button" id="select-all-people"><span id="text-button-people">Select all</span></button>
+    </div>
+    <div class="report-page row-fluid">
+        <form method="post" action="/stat/personal_report" id="report-people">
+            <div class="row-fluid">
+                <div class="span4">
+                    {% for i in personal_report %}
+                    <label class="checkbox">
+                        <input type="checkbox" name="question[]"   value="{{ i.1 }}">{{ i.0 }}
+                    </label>
+                    {% if loop.index % columns == 0 %}
+                </div> <div class="span4">
+                {% endif %}
+                {% endfor %}
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="control-panel row-fluid">
+  <div class="span3 offset3">
+    <a href="#" id="export_data_to_xls">Export Data</a>
+    <a href="#" id="export_people_to_xls">Export People</a>
+    <a href="/stat/xls" id="export_report_to_xls">Export Report To XLS</a>
+  </div>
+  <div class="span2 offset2">
+    <a href="/stat/logout" id="logout_btn">Logout</a>
+  </div>
+</div>
+
+<div class="report-page row-fluid">
+  <div class="span6 offset3">
+      <div class="report-table-wrapper">
+          <table border="1" width="100%">
+              <tr>
+                  <th align="center" class="section-title" width="70">Total :</th>
+                  <td align="center">{{countitems}}</td>
+              </tr>
+          </table>
+      </div>
+    {% for f in report %}
+    <div class="clearfix"></div>
+    <div class="report-table-wrapper">
+      <table border="1" width="100%">
+        <tr>
+          <th align="center" class="question-no">
+            {{ f.no }}
+          </th>
+          <th colspan="3" align="left">
+            {{ f.title }}
+          </th>
+        </tr>
+        {% for k,v in f.values %}
+        <tr>
+          <td>&nbsp;</td>
+          <td style="width:20px">&nbsp;</td>
+          {% if v == -1 %}
+          <td colspan="2" align="left" class="section-title">
+            <strong>{{ k }}</strong>
+          </td>
+          {% elseif v is iterable %}
+          <td align="left" style="width:50%;padding: 0 10px;">{{ k }}</td>
+          <td>
+            <table border="1" class="range-votes" width="100%">
+              <tr>
+                {% for n,m in v %}
+                <th style="width:16.5%">{{ n }}</th>
+                {% endfor %}
+              </tr>
+              <tr align="center">
+                {% for n,m in v %}
+                <td>{{ m }}</td>
+                {% endfor %}
+              </tr>
+            </table>
+          </td>
+          {% else %}
+          <td align="left" style="width:50%;padding: 0 10px;">{{ k }}</td>
+          <td align="left" style="padding: 0 10px;">{{ v }}</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+{% block before_footer %}
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script>
+    var showData = function showModal() {
+        $( "#dialog-modal" ).dialog({
+            height: 740,
+            width : 1400,
+            modal: false,
+            buttons: {
+                "Export": function() {
+                    var valid     = 1,
+                        divId     = '#dialog-modal',
+                        className = '.row-fluid';
+
+                   $(divId).find('div'+className).each(function() {
+                        valid &= $(this).find(':checked').length > 0 ? 1 : 0;
+                   });
+
+                   if(valid) {
+                       $( this ).click($("#report").submit());
+                   } else {
+                       alert("No selected fields!");
+                   }
+
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+    }
+
+    var showPeople = function showModal() {
+
+        $("#dialog-modal-people").dialog({
+            height: 500,
+            width : 800,
+            modal: false,
+            buttons: {
+                "Export": function() {
+                    var valid     = 1,
+                        divId     = '#dialog-modal-people',
+                        className = '.row-fluid';
+
+                    $(divId).find('div'+className).each(function() {
+                        valid &= $(this).find(':checked').length > 0 ? 1 : 0;
+                    });
+
+                    if(valid) {
+                        $( this ).click($("#report-people").submit());
+                    } else {
+                        alert("No selected fields!");
+                    }
+
+                },
+                Cancel: function() {
+                    $( this ).dialog("close");
+                }
+            }
+        });
+    }
+
+    $('#export_data_to_xls').click(showData);
+    $('#export_people_to_xls').click(showPeople);
+
+    $('#select-all').click(function() {
+        $('#report').find(':checkbox').each(function() {
+            $('#text-button').empty();
+            if(!$(this).is(':checked')) {
+                this.checked = true;
+                $('#text-button').append('Deselect');
+            } else {
+                this.checked = false;
+                $('#text-button').append('Select all');
+            }
+        });
+    });
+
+    $('#select-all-people').click(function() {
+        $('#report-people').find(':checkbox').each(function() {
+            $('#text-button-people').empty();
+            if(!$(this).is(':checked')) {
+                this.checked = true;
+                $('#text-button-people').append('Deselect');
+            } else {
+                this.checked = false;
+                $('#text-button-people').append('Select all');
+            }
+        });
+    });
+</script>
+{% endblock %}
+

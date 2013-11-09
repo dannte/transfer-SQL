@@ -1,0 +1,435 @@
+/** CSS STYLES AT A PAGE WIDTH OF 1500 PIXELS ********************************/
+/*****************************************************************************/
+
+@media only screen and (max-width:1500px)
+{
+	/* collapse work section */
+	#work .video {height:200px; width:33.33333%; float:left;}
+	
+	/*collapse about section*/	
+	#wrap.about { height:auto; overflow:auto;}
+	#about { height:auto; position:relative; overflow:auto; background-color:#ede06b;}
+	
+	#about .profiles.outer { margin-right:350px; float:left; }
+	
+	#about .services.outer { position:absolute; top:0px; right:0px; width:350px; min-height:0px; height:auto;}
+	
+	#about .extra-wrap.outer { position:static; float:left; width:100%; min-height:auto; }
+	#about .extra-wrap #clients { min-height:200px; }
+	#about .extra-wrap #clients li {width:20%; float:left; text-align:center; height:70px}
+
+	#about .extra-wrap #callout { }
+	
+	
+}
+
+/** CSS STYLES AT A PAGE WIDTH OF 1400 PIXELS ********************************/
+/*****************************************************************************/
+
+@media only screen and (max-width:1400px)
+{
+	/*collapse new contact */
+	#cont {overflow:auto; margin-bottom:70px;}
+	#cont .contact-info { width:33.33333%;}
+	#cont .contact-form {margin:0px 0px 0px 33.33333%; }
+	#cont .social-feeds {background:#666; position:static; width:100%; overflow:auto;}
+	#cont .social-feeds ul li {height:200px; width:33.33333%; float:left;}
+	
+	#wrap.work-single #media .the-content {}
+	#wrap.work-single #media .close-video-web { display:none; }
+	#wrap.work-single #media .the-content .close-video-mobile {display:block; width:700px; overflow:auto; margin:0px auto 20px auto;}
+	#wrap.work-single #media .the-content .close-video-mobile .close-button { float:right; clear:both;}
+	#wrap.work-single #media .video {clear:both; width:700px; position:relative; margin:0px auto; padding-bottom:0px;}
+	#wrap.work-single #media .video iframe { width:100%; }
+	#wrap.work-single #media .gallery {float:none; clear:both; width:700px; position:static; margin:0px auto; display:block;}
+	#wrap.work-single #media .info { float:none; color:#fff; width:700px; margin:30px auto 0px auto;}
+	#wrap.work-single #media .gallery-info.info {float:none; clear:both; position:static; margin:30px auto 20px auto; }
+}
+
+/** CSS STYLES AT A PAGE WIDTH OF 1200 PIXELS ********************************/
+/*****************************************************************************/
+
+@media only screen and (max-width:1200px)
+{
+	/*collapse blog sections*/	
+	#blog { overflow:auto;}
+	#blog .single-entry { height:auto;}
+	#blog .segment.info { float:left; width:100%; position:static;}
+	#blog .wrap-adjust { float:none; height:350px; margin-right:0px;}
+	#blog .segment.info { height:auto; padding:50px 0px; border-left:none; border-top:1px solid #222;}
+	#blog .segment.info ul.poster {margin:0px 50px 20px 50px;}
+	#blog .segment.info ul.tags {margin:0px 50px 20px 50px;}
+	#blog .segment.info ul .content {width:60%;}
+	
+	#blog .segment.post { padding-bottom:0px;}
+	
+	#blog .segment.info .share {position:static; margin-left:50px;}
+	
+	
+}
+
+/** CSS STYLES AT A PAGE WIDTH OF 1100 PIXELS ********************************/
+/*****************************************************************************/
+
+@media only screen and (max-width:1100px)
+{
+	/* blog section */
+	#blog .opened-post .centered-wrap ul li { width:80%; margin:0px 10% 30px 10%; }
+	#blog .opened-post .centered-wrap .all-copy { width:80%; margin:30px 0px 30px 10%; padding:0px; display:inline-block; }
+	#blog .opened-post .centered-wrap iframe { width:100%; margin:0px; }
+
+	
+	/* collapse work section */
+	#work .video {height:200px; width:50%; float:left;}
+	
+	/* collapse work single */
+	#wrap.work-single #media .the-content .close-video-mobile { display:block; width:86%; overflow:auto; margin:0px 7% 20px 7%; }
+	#wrap.work-single #media .the-content .close-video-mobile .close-button { float:right; clear:both; }
+	#wrap.work-single #media .video { clear:both; width:86%; position:static; margin:0px 7%; }
+	#wrap.work-single #media .info { float:none; color:#fff; width:86%; margin: 30px 7% 0px 7%; }
+	#wrap.work-single #media .gallery { clear:both; width:86%; position:static; margin:0px 7%; }
+
+	/*collapse new contact*/
+	#cont .contact-info {position:static; width:100%; float:left;}
+	#cont .contact-info ul { float:left; margin-right:10%; }
+	#cont .contact-info ul.phone {}
+	#cont .contact-info .center-wrap { overflow:auto;}
+	#cont .contact-form {margin:0px; float:left; width:100%;}
+	#cont .social-feeds ul li {width:50%;}
+	
+}
+
+/** CSS STYLES AT A PAGE WIDTH OF 1000 PIXELS *******************************/
+/****************************************************************************/
+
+@media only screen and (max-width:1000px)
+{
+	/*stop nav shrink
+	#web-nav {width:200px;}
+	#wrap { float:right; margin-left:200px; width:100%;}*/
+}
+
+/** CSS STYLES AT A PAGE WIDTH OF 900 PIXELS *********************************/
+/*****************************************************************************/
+
+@media only screen and (max-width:900px)
+{
+	/*collapse blog sections*/
+	#blog .single-entry {height:auto;}
+	#blog .segment.img {border-bottom:1px solid #222;}
+	#blog .segment.img, #blog .segment.post { width:100%; height:350px;}
+	#blog .wrap-adjust { float:none; height:auto; margin-right:0px;}
+	#blog .segment.post {height:auto; padding-bottom:50px;}
+	#blog .segment.img div {display:none;}
+	
+	/*collapse about section*/
+	#about .services.outer { position:static; float:left; width:100%; min-height:200px;}
+	#about .services.outer ul {padding:0px;}
+	#about .services.outer li {float:left; width:34%; height:150px; padding-left:8%; padding-right:8%;}
+	#about .profiles.outer { margin-right:0px; float:left; }
+	#about #about-copy {min-height:0px;}
+	#about #about-copy #content-container li p.post-script {padding-bottom:50px;}
+	
+	/*** GENERAL ***/
+	#wrap {width:100%; float:none; }
+	#wrap.connect {height:auto;}	
+	
+		
+	/*** NAVIGATION ***/
+	#web-nav { display:none;}
+	#mobile-nav { width:100%; background:url(../img/menu-bg.png) repeat; height:70px; display:block; position:fixed; z-index:50; top:0px;}
+	#mobile-nav img.logo { height:35px; width:auto; margin:18px 20px; }
+	#mobile-nav img.drop-nav { height:42%; position:absolute; top:31%; right:20px; cursor:pointer;}
+	#mobile-expand {background:url(../img/menu-bg.png) repeat; height:100%; width:100%; position:fixed; z-index:50; top:0px; display:none;}
+	#mobile-expand img.close { margin:20px; cursor:pointer; position:absolute; right:0px; z-index:70;}
+	#mobile-expand img.logo { height:35px; width:auto; position:absolute; left:0px; margin:18px 20px;} 
+	#mobile-expand #menu {position:relative; float:right; margin-left:0px; padding-left:0px; text-transform:uppercase; color:#fff; font-size:1.2em; list-style-type:none; text-align:right; margin-right:30px; margin-top:140px; position:relative;} 
+	#mobile-expand ul li .parent:hover {color:#EDE06B; cursor:pointer; }
+	#mobile-expand ul a:hover {color:#EDE06B;}
+	#hidden-nav { display:none; width:0px; height:100%; float:right; border-left:1px solid #ccc; background:url(../img/hidden-bg.jpg) fixed no-repeat top right; background-size:160px auto;}
+	#hidden-nav {}
+	#mobile-expand #menu .work-subs { list-style-type:none; position:absolute; top:27px; right:-130px; text-align:left;}
+	
+	/*** INDEX ***/
+	#highlight-content {top:50%; padding-top:25px;}
+	/* Extra percentage top above is half of the percentage height of the nav */
+	
+	/* WORK */
+	#work { margin-top:70px;}
+	#work .video {height:200px; width:50%; float:left;}
+	#work .bottom-room {display:none;}
+	
+	/*vid single*/
+	#video-single {margin-top:70px;}
+	#wrap.work-single #media .the-content {padding-top:90px;}
+	#wrap.work-single #media .bottom-room {height:10px;}
+	
+	/*** ABOUT ***/
+	#about { margin-top:70px; margin-bottom:0px;}
+	.footerspace {display:none;}
+	
+	/*** BLOG ***/
+	#blog { margin-top:70px; margin-bottom:0px;}
+	
+	/*** CONTACT ***/
+	#cont {margin:70px 0px 0px 0px;}
+	
+	/*** FOOTER ***/
+	footer { position:static; overflow:auto; margin-left:0px; width:100%;}
+	#footer-content {margin-left:0px;}
+	
+}
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (max-device-width: 1024px){
+	body { color:#3b3b3b; font-size:1em; font-family:'bgBold',arial,helvetica,sans-serif; margin:0px; padding:0px; width:100%; height:100%; background:url('../img/bg.jpg') no-repeat top center fixed; background-size:auto 1024px;}
+	
+	/*** GENERAL ***/
+	#wrap {width:100%; float:none; }
+	#wrap.connect {height:auto;}	
+		
+	/*** NAVIGATION ***/
+	#web-nav { display:none;}
+	#mobile-nav { width:100%; background:url(../img/menu-bg.png) repeat; height:70px; display:block; position:fixed; z-index:50; top:0px;}
+	#mobile-nav img.logo { height:35px; width:auto; margin:18px 20px; }
+	#mobile-nav img.drop-nav { height:42%; position:absolute; top:31%; right:20px; cursor:pointer;}
+	#mobile-expand {background:url(../img/menu-bg.png) repeat; height:100%; width:100%; position:fixed; z-index:50; top:0px; display:none;}
+	#mobile-expand img.close { margin:20px; cursor:pointer; position:absolute; right:0px; z-index:70;}
+	#mobile-expand img.logo { height:35px; width:auto; position:absolute; left:0px; margin:18px 20px;} 
+	#mobile-expand #menu {position:relative; float:right; margin-left:0px; padding-left:0px; text-transform:uppercase; color:#fff; font-size:1.2em; list-style-type:none; text-align:right; margin-right:30px; margin-top:140px;}
+	#mobile-expand ul li .parent:hover {color:#EDE06B; cursor:pointer; }
+	#mobile-expand ul a:hover {color:#EDE06B;}
+	#hidden-nav {display:none; width:0px; height:100%; background-color:#fff; float:right; border-left:1px solid #ccc; background:url(../img/hidden-bg.jpg) fixed no-repeat top right; background-size:150px 1024px;  }
+	#mobile-expand #menu .work-subs { list-style-type:none; position:absolute; top:27px; right:-130px; text-align:left;}
+
+	/*** INDEX ***/
+	#highlight-content {top:50%; padding-top:0px;}
+	/* Extra percentage top above is half of the percentage height of the nav */
+	
+	/* WORK */
+	#work { margin-top:70px;}
+	#work .video {height:200px; width:50%; float:left;}
+	#work .bottom-room {display:none;}
+	#work .video .work-info a { display: inline-block; background-color:#EDE06B; padding:7px 10px; color:#000; margin:0px auto; text-transform:uppercase; font-size:80%;}
+	#work .video .work-info a.inactive-on-mobile { display:none;}
+
+	/*vid single*/
+	#video-single {margin-top:70px;}
+	#wrap.work-single #media .the-content {padding-top:90px;}
+	#wrap.work-single #media .bottom-room {height:10px;}
+	
+	/*** ABOUT ***/
+	#about { margin-top:70px; margin-bottom:0px;}
+	.footerspace {display:none;}
+	
+	/*** BLOG ***/
+	#blog { margin-top:70px; margin-bottom:0px;}
+	
+	/*** CONTACT ***/
+	#cont {margin:70px 0px 0px 0px;}
+	
+	/*** FOOTER ***/
+	footer { position:static; overflow:auto;}
+	#footer-content {margin-left:0px;}
+}
+
+/** TABLETS IN PORTAIT ONLY **********************************/
+/*************************************************************/
+@media all and (min-device-width: 768px) and (max-device-width:1024px) and (orientation:portrait)
+{	 
+	body { color:#3b3b3b; font-size:1em; font-family:'bgBold',arial,helvetica,sans-serif; margin:0px; padding:0px; width:100%; height:100%; background:url('../img/bg.jpg') no-repeat top center fixed; background-size:auto 1024px;}
+	
+	/*** GENERAL ***/
+	#wrap {width:100%; float:none; }
+	#wrap.connect {height:auto;}	
+		
+	/*** NAVIGATION ***/
+	#web-nav { display:none;}
+	#mobile-nav { width:100%; background:url(../img/menu-bg.png) repeat; height:70px; display:block; position:fixed; z-index:50; top:0px;}
+	#mobile-nav img.logo { height:35px; width:auto; margin:18px 20px; }
+	#mobile-nav img.drop-nav { height:42%; position:absolute; top:31%; right:20px; cursor:pointer;}
+	#mobile-expand {background:url(../img/menu-bg.png) repeat; height:100%; width:100%; position:fixed; z-index:50; top:0px; display:none;}
+	#mobile-expand img.close { margin:20px; cursor:pointer; position:absolute; right:0px; z-index:70;}
+	#mobile-expand img.logo { height:35px; width:auto; position:absolute; left:0px; margin:18px 20px;} 
+	#mobile-expand #menu {position:relative; float:right; margin-left:0px; padding-left:0px; text-transform:uppercase; color:#fff; font-size:1.2em; list-style-type:none; text-align:right; margin-right:30px; margin-top:140px;}
+	#mobile-expand ul li .parent:hover {color:#EDE06B; cursor:pointer; }
+	#mobile-expand ul a:hover {color:#EDE06B;}
+	#hidden-nav {display:none; width:0px; height:100%; background-color:#fff; float:right; border-left:1px solid #ccc; background:url(../img/hidden-bg.jpg) fixed no-repeat top right; background-size:150px 1024px;  }
+	#mobile-expand #menu .work-subs { list-style-type:none; position:absolute; top:27px; right:-130px; text-align:left;}
+
+	/*** INDEX ***/
+	#highlight-content {top:50%; padding-top:0px;}
+	/* Extra percentage top above is half of the percentage height of the nav */
+	
+	/* WORK */
+	#work { margin-top:70px;}
+	#work .video {height:200px; width:50%; float:left;}
+	#work .bottom-room {display:none;}
+	#work .video .work-info a { display: inline-block; background-color:#EDE06B; padding:7px 10px; color:#000; margin:0px auto; text-transform:uppercase; font-size:80%;}
+	#work .video .work-info a.inactive-on-mobile { display:none;}
+
+	/*vid single*/
+	#video-single {margin-top:70px;}
+	#wrap.work-single #media .the-content {padding-top:90px;}
+	#wrap.work-single #media .bottom-room {height:10px;}
+	
+	/*** ABOUT ***/
+	#about { margin-top:70px; margin-bottom:0px;}
+	.footerspace {display:none;}
+	
+	/*** BLOG ***/
+	#blog { margin-top:70px; margin-bottom:0px;}
+	
+	/*** CONTACT ***/
+	#cont {margin:70px 0px 0px 0px;}
+	
+	/*** FOOTER ***/
+	footer { position:static; overflow:auto;}
+	#footer-content {margin-left:0px;}
+}
+
+@media all and (min-device-width: 768px) and (max-device-width:1024px) and (orientation:landscape)
+{
+	/*** GENERAL ***/
+	body { color:#3b3b3b; font-size:1em; font-family:'bgBold',arial,helvetica,sans-serif; margin:0px; padding:0px; width:100%; height:100%; background:url('../img/bg.jpg') no-repeat top center fixed; background-size:auto 768px;}
+	#wrap { width:100%; float:none; }
+	#wrap.connect { height:auto; }	
+		
+	/*** NAVIGATION ***/
+	#web-nav { display:none; }
+	#mobile-nav { width:100%; background:url(../img/menu-bg.png) repeat; height:70px; display:block; position:fixed; z-index:50; top:0px;}
+	#mobile-nav img.logo { height:35px; width:auto; margin:18px 20px; }
+	#mobile-nav img.drop-nav { height:42%; position:absolute; top:31%; right:20px; cursor:pointer;}
+	#mobile-expand {background:url(../img/menu-bg.png) repeat; height:100%; width:100%; position:fixed; z-index:50; top:0px; display:none;}
+	#mobile-expand img.close { margin:20px; cursor:pointer; position:absolute; right:0px; z-index:70;}
+	#mobile-expand img.logo { height:35px; width:auto; position:absolute; left:0px; margin:18px 20px;} 
+	#mobile-expand #menu {position:relative; float:right; margin-left:0px; padding-left:0px; text-transform:uppercase; color:#fff; font-size:1.2em; list-style-type:none; text-align:right; margin-right:30px; margin-top:140px;}
+	#mobile-expand ul li .parent:hover {color:#EDE06B; cursor:pointer; }
+	#mobile-expand ul a:hover {color:#EDE06B;}
+	#hidden-nav {display:none; width:0px; height:100%; background-color:#fff; float:right; border-left:1px solid #ccc; background:url(../img/hidden-bg.jpg) fixed no-repeat top right; background-size:150px 1024px;}
+	#mobile-expand #menu .work-subs { list-style-type:none; position:absolute; top:27px; right:-130px; text-align:left;}
+	
+	/*** INDEX ***/
+	#highlight-content {top:50%; padding-top:35px;}
+	/* Extra percentage top above is half of the percentage height of the nav */
+	
+	/* WORK */
+	#work { margin-top:70px;}
+	#work .video {height:200px; width:33.3333%; float:left;}
+	#work .bottom-room {display:none;}
+	#work .video .work-info a { display: inline-block; background-color:#EDE06B; padding:7px 10px; color:#000; margin:0px auto; text-transform:uppercase; font-size:80%;}
+	#work .video .work-info a.inactive-on-mobile { display:none;}
+	
+	/*vid single*/
+	#video-single {margin-top:70px;}
+	#wrap.work-single #media .the-content {padding-top:90px;}
+	#wrap.work-single #media .bottom-room {height:10px;}
+	
+	/*** ABOUT ***/
+	#about { margin-top:70px; margin-bottom:0px;}
+	.footerspace {display:none;}
+	
+	/*** BLOG ***/
+	#blog { margin-top:70px; margin-bottom:0px;}
+	
+	/*** CONTACT ***/
+	#cont {margin:70px 0px 0px 0px;}
+	
+	/*** FOOTER ***/
+	footer { position:static; overflow:auto;}
+	#footer-content {margin-left:0px;}
+}
+
+/** CSS STYLES AT A PAGE WIDTH OF 700 PIXELS **********************************/
+/******************************************************************************/
+@media only screen and (max-width: 600px)
+{	
+/* stack footer for mobile */
+	#footer-content {text-align:center;}
+	#footer-content #copyright, #footer-content #connect {float:none; margin:0px 0px 0px 0px; text-align:center; padding:0px;}
+	#footer-content #copyright { margin-top:15px; margin-bottom:5px;}
+	#footer-content #connect {display:inline-block;}
+}
+
+@media only screen and (max-width: 480px)
+{	
+/* stack footer for mobile */
+	#footer-content {text-align:center;}
+	#footer-content #copyright, #footer-content #connect {float:none; margin:0px 0px 0px 0px; text-align:center; padding:0px;}
+	#footer-content #copyright { margin-top:10px; margin-bottom:2px;}
+	#footer-content #connect {display:inline-block; width:100%;}
+	#footer-content #connect .new {margin:0px auto; overflow:auto; display:inline-block;}
+}
+
+/** FOR SMALL DEVICES ONLY **********************************/
+/******************************************************************************/
+@media only screen and (max-device-width: 480px)
+{	
+	body { color:#3b3b3b; font-size:1em; font-family:'bgBold',arial,helvetica,sans-serif; margin:0px; padding:0px; width:100%; height:100%; background:url('../img/bg.jpg') no-repeat top center fixed; background-size:auto 768px;}
+	#highlight-content {top:50%; padding-top:35px;}
+	/* Disable buttons on first click for mobile tap */
+	#work .video .work-info a { display: inline-block; background-color:#EDE06B; padding:7px 10px; color:#000; margin:0px auto; text-transform:uppercase; font-size:80%;}
+	#work .video .work-info a.inactive-on-mobile { display:none;}
+	
+	#hidden-nav {display:none; width:0px; height:100%; background-color:#fff; float:right; border-left:1px solid #ccc; background:url(../img/hidden-bg.jpg) fixed no-repeat top right; background-size:150px 1024px;}
+}
+/** CSS STYLES AT A PAGE WIDTH OF 500 PIXELS **********************************/
+/******************************************************************************/
+
+@media only screen and (max-width:500px)
+{
+	/* collapse work section */
+	#work .video {height:200px; width:100%; float:left;}
+	
+	/* collapse about services */
+	#about .services.outer ul {padding:0px 50px 40px 50px; overflow:auto;}
+	#about .services.outer li {float:left; width:100%; height:auto; padding:0px;}
+	#about .extra-wrap #clients li {width:33.33333%; float:left; text-align:center; height:70px;}
+	#about .extra-wrap #clients ul { padding:0px 10px 30px 10px;}
+	#about #about-copy #content-container li p.post-script {padding-bottom:30px;}
+	
+	#about #about-head #about-headers li h2 {font-size:1.3em; line-height:1.3em; margin:0px 30px;}
+	#about #about-images {height:200px;}
+	#about #about-images .next-button img, #about #about-images .previous-button img { height:50%; width:auto;}
+	#about #about-images .next-button, #about #about-images .previous-button {margin-top:-55px;}
+	#about #about-copy #content-container li p {margin:30px;}
+	#about #about-copy #content-container li p.post-script {font-size:1.1em;}
+	#about .services.outer h1 {font-size:2em; padding:30px 30px;}
+	#about .services.outer ul { padding:0px 30px 0px 30px;}
+	#about .extra-wrap #clients h1 {font-size:2em; padding:30px 30px;}
+	#about .extra-wrap #callout p {margin-bottom:30px;}
+	#about .extra-wrap #callout p.quote {margin:30px 0px 0px 0px; font-size:2em; line-height:1em;}
+
+	/*mobile home */
+	#highlight-content h1 {font-size:1.3em; line-height:1.3em;}
+	#highlight-content h3.play-link { margin-top:10px;}
+	
+	/*blog*/
+	#blog .segment.img {height:200px;}
+	#blog .segment.post p.post-date {margin:30px 30px 20px 30px;}
+	#blog .segment.post h2 {margin-left:30px; margin-right:30px; font-size:1.3em;}
+	#blog .segment.post div.thepost p {margin:0px 30px;}
+	
+	#blog .segment.info ul .content {width:50%;}
+	#blog .segment.post p.view-post { margin:10px 30px;} 
+}
+
+/** CSS STYLES AT A PAGE WIDTH OF 400 PIXELS **********************************/
+/******************************************************************************/
+
+@media only screen and (max-width:400px)
+{	
+	/* collapse new contact */
+	#cont .social-feeds ul li { width:100%;}
+	#cont .social-feeds ul li.bonus-item { display:none;}
+	#cont .center-wrap h1 { font-size:2em; padding:30px 0px;}
+	#cont .center-wrap { margin:0px 30px; padding-bottom:30px;}
+}
+
+/** CSS STYLES AT A PAGE HEIGHT OF 400 PIXELS **********************************/
+
+@media only screen and (max-height:650px)
+{
+	/*** NAVIGATION ***/
+	#web-nav #address {display:none;}
+}
+

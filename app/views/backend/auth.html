@@ -1,0 +1,26 @@
+{% extends "backend_layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="row">
+    <div class="center login-header" style="margin-bottom:120px;margin:0 auto;width:600px">
+      <h2 style="color:#CB0538">WALA Survey</h2>
+    </div><!--/span-->
+  </div><!--/row-->
+  <div class="row">
+    <div class="well center login-box" style="margin:0 auto;width:600px">
+      {% if message %}
+      <div class="alert alert-info red">{{ message }}</div>
+      {% endif %}
+      <form class="form-horizontal" action="/stat/" method="post">
+        <fieldset class="center">
+          <div class="input-prepend" title="Authorization Key" data-rel="tooltip" style="padding-left:150px">
+            <span class="add-on"><i class="icon-lock"></i></span>
+            <input class="input-large" name="auth_key" id="auth_key" type="password" value=""> 
+            &nbsp;&nbsp; <button type="submit" class="btn btn-primary" style="background-image:none;background-color:#CB0538;">Login</button>
+          </div>
+        </fieldset>
+      </form>
+    </div><!--/span-->
+  </div><!--/row-->
+</div><!--/fluid-row-->
+{% endblock %}
