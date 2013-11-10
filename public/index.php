@@ -23,7 +23,7 @@ $app = new Silex\Application();
 
 
 // TODO: Debug mode
-$app['debug'] = false;
+$app['debug'] = true;
 
 // Loading array with settings
 $app['etc'] = require_once APP_ROOT_DIR . '/etc/config.php';
@@ -32,29 +32,20 @@ $app['etc'] = require_once APP_ROOT_DIR . '/etc/config.php';
 // Registering Silex services
 $app->register(new Silex\Provider\TwigServiceProvider(), ['twig.path' => APP_ROOT_DIR.'/views']);
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array('db.options' => $app['etc']['database']));
-//var_dump($connect = new Silex\Provider\DoctrineServiceProvider(), array('db.options' => $app['etc']['database']));
 $app->register(new Silex\Provider\SessionServiceProvider());
 
 /**
  * Actions that will be running before controller
  */
-$app->before(function() use($app) {
-  // Simple Authorization
-   $path = trim($app['request']->getPathInfo(), '/');
-
-   if ($app['session']->get('is_authorized') == null && $path == '') {
-       //$app->mount('/', require APP_ROOT_DIR . '/controllers/frontend.php');
-       //return $app->redirect('/');
-
-   }
-
-  $flash = $app['session' ]->get('flash');
-  $app['session']->set('flash', null);
-
-  if (!empty($flash)) {
-    $app['twig']->addGlobal('flash', $flash);
-  }
-});
+//$app->before(function() use($app) {
+//  // Simple Authorization
+//   $path = trim($app['request']->getPathInfo(), '/');
+//
+//   if ($app['session']->get('is_authorized') == null && $path == '') {
+//      return $app->redirect('/');
+//   }
+//
+//});
 
 
 /**
@@ -74,6 +65,5 @@ $alert = function ($message, $title = '', $type = 'info')
  * Mount Controllers
  */
 $app->mount('/', require APP_ROOT_DIR . '/controllers/frontend.php');
-$app->mount('/stat', require APP_ROOT_DIR . '/controllers/backend.php');
 
 $app->run();

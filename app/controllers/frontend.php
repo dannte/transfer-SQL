@@ -8,11 +8,22 @@ $frontend = $app['controllers_factory'];
 /**
  * Show survey form
  */
+
 $frontend->get('/', function() use($app) {
-  return $app['twig']->render('frontend/content.html', array());
+    $path = trim($app['request']->getPathInfo(), '/');
+
+    if ($app['session']->get('is_authorized') == null && $path == '') {
+       return $app['twig']->render('frontend/auto.html', array());
+    } else {
+        return $app['twig']->render('frontend/content.html', array());
+    }
 });
 
-
+$app->get('index.php/login', function() use($app)
+{
+    echo 'Test';
+    die();
+});
 
 /**
  * Save data in database
@@ -36,6 +47,12 @@ $frontend->post('/', function() use($app) {
         $addDb->addNewConnect($postData);
     }
 
+});
+
+$app->post('/login', function() use($app)
+{
+   var_dump($app['request']->request->all());
+    exit();
 });
 
 return $frontend;

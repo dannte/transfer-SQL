@@ -42,8 +42,6 @@ $this->app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 
 $this->app['db']->fetchAssoc('SELECT * FROM some');
    var_dump($this->app['db']->fetchAssoc('SELECT * FROM some'));
-//     $result->fetchAll();
-      die();
   }
   public function buildReport()
   {
