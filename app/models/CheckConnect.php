@@ -10,13 +10,10 @@ class CheckConnect
 
     protected $pass = '';
 
-    protected $db   = '';
-
-    function __construct($host, $user, $pass, $db) {
-        $this->host = $host;
-        $this->user = $user;
-        $this->pass = $pass;
-        $this->db   = $db;
+    function __construct($arrData) {
+        $this->host = $arrData['connect_host'];
+        $this->user = $arrData['connect_user'];
+        $this->pass = $arrData['connect_password'];
     }
 
     public function getListDataBases() {
@@ -29,7 +26,6 @@ class CheckConnect
         $result = @mysql_query('SHOW DATABASES'); 
         $arrDb  = array();
 
-       
         while ($row = mysql_fetch_array($result)) { 
             $arrDb[] = $row['Database'];
         }

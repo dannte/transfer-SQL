@@ -9,6 +9,19 @@ $frontend = $app['controllers_factory'];
  * Show survey form
  */
 
+$app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+    'dbs.options' => array(
+        'transfer-dev' => array(
+            'driver'    => 'pdo_mysql',
+            'host'      => 'localhost',
+            'dbname'    => 'transfer-dev',
+            'user'      => 'root',
+            'password'  => 'shumaxer86',
+            'charset'   => 'utf8',
+        )
+    )
+));
+
 $frontend->get('/', function() use($app) {
     $path = trim($app['request']->getPathInfo(), '/');
 
@@ -21,8 +34,7 @@ $frontend->get('/', function() use($app) {
 
 $app->get('index.php/login', function() use($app)
 {
-    echo 'Test';
-    die();
+
 });
 
 /**
@@ -32,14 +44,10 @@ $frontend->post('/', function() use($app) {
     $postData = $app['request']->request->all();
 
     if ($postData['i_db_name'] == '' && $postData['s_db_name'] == '') {
-        $checkConnect = new \App\Models\CheckConnect($postData['connect_host'],$postData['connect_user'],$postData['connect_password']);
+        $checkConnect = new \App\Models\CheckConnect($postData);
         $listDataBase = $checkConnect->getListDataBases();
 
-        if (!$listDataBase) {
-            return json_encode(false);
-        } else {
-            return json_encode($listDataBase);
-        }
+        return !$listDataBase? json_encode(false): json_encode($listDataBase);
     } else {
         $postData['db_name'] = $postData['i_db_name'] == '' ? $postData['s_db_name'] : $postData['i_db_name'];
 
@@ -51,8 +59,23 @@ $frontend->post('/', function() use($app) {
 
 $app->post('/login', function() use($app)
 {
-   var_dump($app['request']->request->all());
-    exit();
+    $post = $app['request']->request->all();
+
+    if (empty($post)) {
+        return $app->redirect('/');
+    }
+
+    $sql  = "SELECT * FROM active_users WHERE login = ? AND password = ?";
+    $user = $app['db']->fetchAssoc($sql, array($post['user_login'], md5($post['user_pass'])));
+
+    if (!$user) {
+        return $app->redirect('/');
+    }
+
+    $app['session']->set('is_authorized', 1);
+    $app['session']->set('user_active', $user['login']);
+
+    return $app['twig']->render('frontend/content.html', array('user_lod' => $app['session']->get('user_active')));
 });
 
 $app->post('/reg', function() use($app)
@@ -65,19 +88,6 @@ $app->post('/reg', function() use($app)
         $log = $arrRegistration['reg_login'];
 
         if (!empty($pas) && !empty($log)) {
-            $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
-                'dbs.options' => array(
-                    'transfer-dev' => array(
-                        'driver'    => 'pdo_mysql',
-                        'host'      => 'localhost',
-                        'dbname'    => 'transfer-dev',
-                        'user'      => 'root',
-                        'password'  => 'shumaxer86',
-                        'charset'   => 'utf8',
-                    )
-                )
-            ));
-
             $app['db']->insert('active_users', array(
                 'date'     => strtotime(date("Y-m-d H:i:s")),
                 'login'    => $log,
@@ -85,8 +95,9 @@ $app->post('/reg', function() use($app)
             ));
         }
 
-        var_dump($app['request']->query->get('id'));
-
+        if ($app['db']->lastInsertId()) {
+            return $app->redirect('/');
+        }
     }
 });
 return $frontend;
