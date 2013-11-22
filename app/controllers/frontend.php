@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Backend;
 
-
+use Silex;
 $frontend = $app['controllers_factory'];
 
 /**
@@ -55,4 +55,38 @@ $app->post('/login', function() use($app)
     exit();
 });
 
+$app->post('/reg', function() use($app)
+{
+    $arrRegistration = $app['request']->request->all();
+
+    if (isset($arrRegistration) && !empty($arrRegistration)) {
+
+        $pas = $arrRegistration['reg_pass'];
+        $log = $arrRegistration['reg_login'];
+
+        if (!empty($pas) && !empty($log)) {
+            $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+                'dbs.options' => array(
+                    'transfer-dev' => array(
+                        'driver'    => 'pdo_mysql',
+                        'host'      => 'localhost',
+                        'dbname'    => 'transfer-dev',
+                        'user'      => 'root',
+                        'password'  => 'shumaxer86',
+                        'charset'   => 'utf8',
+                    )
+                )
+            ));
+
+            $app['db']->insert('active_users', array(
+                'date'     => strtotime(date("Y-m-d H:i:s")),
+                'login'    => $log,
+                'password' => md5($pas)
+            ));
+        }
+
+        var_dump($app['request']->query->get('id'));
+
+    }
+});
 return $frontend;

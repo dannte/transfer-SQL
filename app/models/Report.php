@@ -36,9 +36,9 @@ class Report
       );
 
 
-$this->app->register(new Silex\Provider\DoctrineServiceProvider(), array(
-    'dbs.options' => $arr
-));
+//$this->app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+//    'dbs.options' => $arr
+//));
 
 $this->app['db']->fetchAssoc('SELECT * FROM some');
    var_dump($this->app['db']->fetchAssoc('SELECT * FROM some'));
