@@ -5,9 +5,6 @@ namespace App\Controllers\Backend;
 use Silex;
 $frontend = $app['controllers_factory'];
 
-/**
- * Show survey form
- */
 
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'dbs.options' => array(
@@ -45,12 +42,14 @@ $frontend->post('/connect_test', function() use($app) {
         $checkConnect = new \App\Models\CheckConnect($postData) ;
         $listDataBase = $checkConnect->getListDataBases();
 
-        return !$listDataBase? json_encode(false): json_encode($listDataBase);
+        return !$listDataBase ? json_encode(false): json_encode($listDataBase);
     } else {
         $postData['db_name'] = $postData['i_db_name'] == '' ? $postData['s_db_name'] : $postData['i_db_name'];
 
         $addDb  = new \App\Models\ModelTables($app);
-        $addDb->addNewConnect($postData);
+        $tables = $addDb->addNewConnect($postData);
+
+        return !$tables ? json_encode(false): json_encode($tables);
     }
 
 });

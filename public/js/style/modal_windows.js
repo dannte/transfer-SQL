@@ -103,7 +103,7 @@
     };
 
     var getListDb = function (data) {
-        var b    = objectWLC.button;
+        var b = objectWLC.button;
 
         if (data == 'false') {
             toggleButton(b.listStyleButton.fail, 'Fail...');
@@ -118,7 +118,26 @@
     };
 
     var registerDb = function (data) {
+        var b = objectWLC.button;
 
+        if (data == 'false') {
+            toggleButton(b.listStyleButton.fail, 'Fail...');
+        } else {
+            var table = $(".lis-active-connect tbody"),
+                host  = $("#exampleInputHost").val(),
+                user  = $("#exampleInputUser").val(),
+                db    = $('.filter-option.pull-left').text(),
+                count = $('.lis-active-connect >tbody >tr').length + 1;
+
+            table.append('<tr class="success">'
+                         + '<td>' + count + '</td>'
+                         + '<td>' + host + '</td>'
+                         + '<td>' + user + '</td>'
+                         + '<td>' + db + '</td>'
+                         + '<td><a href="#" style="color: red;">Edit</a>&nbsp'
+                         + '<a href="#" style="color: red;">Delete</a></td></tr>');
+
+        }
     };
     //-----------------------------------------------------------------------------
     $(objectWLC.removeBtnId).click(function () {
