@@ -37,21 +37,19 @@ $frontend->get('/login', function() use($app)
     echo 'hello';
 });
 
-/**
- * Save data in database
- */
+
 $frontend->post('/connect_test', function() use($app) {
     $postData = $app['request']->request->all();
 
     if ($postData['i_db_name'] == '' && $postData['s_db_name'] == '') {
-        $checkConnect = new \App\Models\CheckConnect($postData);
+        $checkConnect = new \App\Models\CheckConnect($postData) ;
         $listDataBase = $checkConnect->getListDataBases();
 
         return !$listDataBase? json_encode(false): json_encode($listDataBase);
     } else {
         $postData['db_name'] = $postData['i_db_name'] == '' ? $postData['s_db_name'] : $postData['i_db_name'];
 
-        $addDb  = new \App\Models\Report($app);
+        $addDb  = new \App\Models\ModelTables($app);
         $addDb->addNewConnect($postData);
     }
 

@@ -136,6 +136,7 @@
 	});
 
     $(objectWLC.form + '  .' + objectWLC.button.className).click(function() {send(true);});
+
     $("#bs3Select").change(function () {
         send(false);
     });

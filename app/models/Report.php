@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Silex;
-use Silex\Provider\DoctrineServiceProvider;
+
 
 class Report
 {
@@ -16,7 +16,7 @@ class Report
 
   public function __construct($app)
   {
-    $this->app = new Silex\Application();
+    $this->app = $app;
   }
 
   public function addNewConnect($arrData)
@@ -35,13 +35,15 @@ class Report
           )
       );
 
+      $this->app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+        'dbs.options' => $arr
+      ));
 
-//$this->app->register(new Silex\Provider\DoctrineServiceProvider(), array(
-//    'dbs.options' => $arr
-//));
+      $sql = "show tables";
 
-$this->app['db']->fetchAssoc('SELECT * FROM some');
-   var_dump($this->app['db']->fetchAssoc('SELECT * FROM some'));
+
+      $this->app['dbs'][$data['db_name']]->fetchAssoc($sql);
+    var_dump($this->app['dbs'][$data['db_name']]->fetchAssoc($sql));
   }
   public function buildReport()
   {
