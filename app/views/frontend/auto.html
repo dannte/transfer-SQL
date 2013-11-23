@@ -1,14 +1,22 @@
 {% extends "authorization_layout.html" %}
 {% block content %}
-    <div class="container">
-      <form class="form-signin" role="form"  action="index.php/login" method="post">
+<div class="container">
+    <form class="form-signin" role="form" id="auth" action="/index.php/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" class="input-block-level" placeholder="Login" name="user_login" value="">
         <input type="password" class="input-block-level" name="user_pass"  placeholder="Password" value="">
-        <!--<label class="checkbox">-->
-          <!--<input type="checkbox" value="remember-me"> Remember me-->
-        <!--</label>-->
+
         <button class="btn btn-large btn-primary" type="submit">Sign in</button>
-      </form>
-    </div>
+        <a href="#" id="register" class="btn btn-primary">Registration</a>
+    </form>
+
+    <form class="form-signin" role="form" id="reg" action="/index.php/reg" method="post" style="display: none;">
+        <h2 class="form-signin-heading">Registration</h2>
+        <input type="text" class="input-block-level" placeholder="Enter login" name="reg_login">
+        <input type="password" class="input-block-level" placeholder="Password" name="reg_pass">
+
+        <button class="btn btn-large btn-primary" type="submit">Ok</button>
+        <a href="#" id="back" class="btn btn-primary">Back</a>
+    </form>
+</div> <!-- /container -->
 {% endblock %}

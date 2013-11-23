@@ -28,19 +28,19 @@ $frontend->get('/', function() use($app) {
     if ($app['session']->get('is_authorized') == null && $path == '') {
        return $app['twig']->render('frontend/auto.html', array());
     } else {
-        return $app['twig']->render('frontend/content.html', array());
+        return $app['twig']->render('frontend/content.html', array('user_lod' => $app['session']->get('user_active')));
     }
 });
 
-$app->get('index.php/login', function() use($app)
+$frontend->get('/login', function() use($app)
 {
-
+    echo 'hello';
 });
 
 /**
  * Save data in database
  */
-$frontend->post('/', function() use($app) {
+$frontend->post('/connect_test', function() use($app) {
     $postData = $app['request']->request->all();
 
     if ($postData['i_db_name'] == '' && $postData['s_db_name'] == '') {
@@ -57,7 +57,7 @@ $frontend->post('/', function() use($app) {
 
 });
 
-$app->post('/login', function() use($app)
+$frontend->post('/login', function() use($app)
 {
     $post = $app['request']->request->all();
 
@@ -78,7 +78,7 @@ $app->post('/login', function() use($app)
     return $app['twig']->render('frontend/content.html', array('user_lod' => $app['session']->get('user_active')));
 });
 
-$app->post('/reg', function() use($app)
+$frontend->post('/reg', function() use($app)
 {
     $arrRegistration = $app['request']->request->all();
 
@@ -100,4 +100,14 @@ $app->post('/reg', function() use($app)
         }
     }
 });
+
+/**
+ * Logout
+ */
+$frontend->get('/logout', function() use($app) {
+    $app['session']->set('is_authorized', null);
+    $app['session']->set('user_active', '');
+    return $app['twig']->render('frontend/auto.html', array());
+});
+
 return $frontend;

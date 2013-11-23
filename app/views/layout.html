@@ -19,7 +19,22 @@
   <nav id="web-nav">
       <div class="col-md-12">
           <div class="btn-toolbar connect-button">
-              {{user_lod}}
+              <div class="btn-group">
+                  <button type="button" class="btn btn-info">
+                      {% if user_lod is defined %}
+                      <span>Active user : </span> {{user_lod}}
+                      {% endif %}
+                  </button>
+                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                      <span class="glyphicon glyphicon-cog"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                      <li><a href="/index.php/logout">Logout</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="btn-toolbar connect-button">
               <div class="btn-group">
                   <a data-toggle="modal" href="#myModal" class="btn btn-danger">Add connections</a>
               </div>
