@@ -3,21 +3,8 @@
 namespace App\Controllers\Backend;
 
 use Silex;
-$frontend = $app['controllers_factory'];
-
-
-$app->register(new Silex\Provider\DoctrineServiceProvider(), array(
-    'dbs.options' => array(
-        'transfer-dev' => array(
-            'driver'    => 'pdo_mysql',
-            'host'      => 'localhost',
-            'dbname'    => 'transfer-dev',
-            'user'      => 'root',
-            'password'  => 'shumaxer86',
-            'charset'   => 'utf8',
-        )
-    )
-));
+$frontend    = $app['controllers_factory'];
+$app['user'] = new \App\Models\ModelUsers($app);
 
 $frontend->get('/', function() use($app) {
     $path = trim($app['request']->getPathInfo(), '/');
@@ -39,7 +26,7 @@ $frontend->post('/connect_test', function() use($app) {
     $postData = $app['request']->request->all();
 
     if ($postData['i_db_name'] == '' && $postData['s_db_name'] == '') {
-        $checkConnect = new \App\Models\CheckConnect($postData) ;
+        $checkConnect = new \App\Models\CheckConnect($postData);
         $listDataBase = $checkConnect->getListDataBases();
 
         return !$listDataBase ? json_encode(false): json_encode($listDataBase);
@@ -62,15 +49,14 @@ $frontend->post('/login', function() use($app)
         return $app->redirect('/');
     }
 
-    $sql  = "SELECT * FROM active_users WHERE login = ? AND password = ?";
-    $user = $app['db']->fetchAssoc($sql, array($post['user_login'], md5($post['user_pass'])));
+    $login = $app['user']->getUserByNamePass($post['user_login'], $post['user_pass']);
 
-    if (!$user) {
+    if (!$login) {
         return $app->redirect('/');
     }
 
     $app['session']->set('is_authorized', 1);
-    $app['session']->set('user_active', $user['login']);
+    $app['session']->set('user_active', $login);
 
     return $app['twig']->render('frontend/content.html', array('user_lod' => $app['session']->get('user_active')));
 });
@@ -84,16 +70,10 @@ $frontend->post('/reg', function() use($app)
         $pas = $arrRegistration['reg_pass'];
         $log = $arrRegistration['reg_login'];
 
-        if (!empty($pas) && !empty($log)) {
-            $app['db']->insert('active_users', array(
-                'date'     => strtotime(date("Y-m-d H:i:s")),
-                'login'    => $log,
-                'password' => md5($pas)
-            ));
-        }
-
-        if ($app['db']->lastInsertId()) {
+        if ($app['user']->addNewUsers($log, $pas)) {
             return $app->redirect('/');
+        } else {
+            return $app['twig']->render('frontend/auto.html', array('error_add_user' => 'Error')); // TODO :: add text error
         }
     }
 });

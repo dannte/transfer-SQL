@@ -10,14 +10,14 @@ $RD = ROOT_DIR;
 $localConfig = [
   'auth_key' => '631b792ec8855b6056a209fc1252252c06f9e326', // 520xCVcV7V3n3RCn
   'database' => array (
-        'transfer-dev' => array(
-            'driver'    => 'pdo_mysql',
-            'host'      => 'localhost',
-            'dbname'    => 'transfer-dev',
-            'user'      => 'root',
-            'password'  => 'shumaxer86',
-            'charset'   => 'utf8',
-        )
+      'transfer-dev' => array(
+          'driver'    => 'pdo_mysql',
+          'host'      => 'localhost',
+          'dbname'    => 'transfer-dev',
+          'user'      => 'root',
+          'password'  => 'shumaxer86',
+          'charset'   => 'utf8',
+      )
     ),
 ];
 

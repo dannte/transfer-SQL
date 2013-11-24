@@ -25,7 +25,17 @@ $app = new Silex\Application();
 $app['etc'] = require_once APP_ROOT_DIR . '/etc/config.php';
 
 $app->register(new Silex\Provider\TwigServiceProvider(), ['twig.path' => APP_ROOT_DIR.'/views']);
-$app->register(new Silex\Provider\DoctrineServiceProvider(), array('db.options' => $app['etc']['database']));
+$app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+    'dbs.options' => array(
+        'transfer-dev' => array(
+            'driver'    => 'pdo_mysql',
+            'host'      => 'localhost',
+            'dbname'    => 'transfer-dev',
+            'user'      => 'root',
+            'password'  => 'shumaxer86',
+            'charset'   => 'utf8',
+        )
+)));
 $app->register(new Silex\Provider\SessionServiceProvider());
 
 $app['debug'] = true;
