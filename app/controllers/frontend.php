@@ -56,7 +56,8 @@ $frontend->post('/login', function() use($app)
     }
 
     $app['session']->set('is_authorized', 1);
-    $app['session']->set('user_active', $login);
+    $app['session']->set('user_active', $login['login']);
+    $app['session']->set('user_id', $login['id']);
 
     return $app['twig']->render('frontend/content.html', array('user_lod' => $app['session']->get('user_active')));
 });
@@ -82,8 +83,16 @@ $frontend->post('/reg', function() use($app)
  * Logout
  */
 $frontend->get('/logout', function() use($app) {
+    $delete = $app['user']->deleteOutUser($app['session']->get('user_id'));
+
+    if (!$delete) {
+        return $app['twig']->render('frontend/content.html', array('error_add_user' => 'Error')); // TODO :: add text error
+    }
+
     $app['session']->set('is_authorized', null);
     $app['session']->set('user_active', '');
+    $app['session']->set('user_id', '');
+
     return $app['twig']->render('frontend/auto.html', array());
 });
 

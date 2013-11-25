@@ -34,9 +34,16 @@ class ModelUsers {
 
     public function getUserByNamePass($login, $pass)
     {
-        $sql  = "SELECT * FROM active_users WHERE login = ? AND password = ?";
+        $sql  = "SELECT * FROM {$this->table} WHERE login = ? AND password = ?";
         $user = $this->app['db']->fetchAssoc($sql, array($login, md5($pass)));
 
-        return !$user ? false : $user['login'];
+        return !$user ? false : $user;
     }
+
+    public function deleteOutUser($id)
+    {
+        return $this->app['db']->delete($this->table, array(
+            'id' => $id
+        ));
+}
 } 

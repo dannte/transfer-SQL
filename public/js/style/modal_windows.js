@@ -97,7 +97,7 @@
             data : frm.serialize(),
             success: function (data) {
                 objectWLC.spinner.hide();
-                param ? getListDb(data) : registerDb(data);
+                getListDb(data);
             }
         });
     };
@@ -117,17 +117,12 @@
         }
     };
 
-    var registerDb = function (data) {
-        var b = objectWLC.button;
-
-        if (data == 'false') {
-            toggleButton(b.listStyleButton.fail, 'Fail...');
-        } else {
-            var table = $(".lis-active-connect tbody"),
-                host  = $("#exampleInputHost").val(),
-                user  = $("#exampleInputUser").val(),
-                db    = $('.filter-option.pull-left').text(),
-                count = $('.lis-active-connect >tbody >tr').length + 1;
+    var registerDb = function () {
+        var table = $(".lis-active-connect tbody"),
+            host  = $("#exampleInputHost").val(),
+            user  = $("#exampleInputUser").val(),
+            db    = $('.filter-option.pull-left').text(),
+            count = $('.lis-active-connect >tbody >tr').length + 1;
 
             table.append('<tr class="success">'
                          + '<td>' + count + '</td>'
@@ -137,7 +132,10 @@
                          + '<td><a href="#" style="color: red;">Edit</a>&nbsp'
                          + '<a href="#" style="color: red;">Delete</a></td></tr>');
 
-        }
+        $('.dropdown-menu .dropdown-menu li').each(function () {
+            if ($(this).hasClass('selected')) {
+                $(this).remove();
+            }});
     };
     //-----------------------------------------------------------------------------
     $(objectWLC.removeBtnId).click(function () {
@@ -157,6 +155,8 @@
     $(objectWLC.form + '  .' + objectWLC.button.className).click(function() {send(true);});
 
     $("#bs3Select").change(function () {
-        send(false);
+        registerDb();
     });
+
+
 })(jQuery);
