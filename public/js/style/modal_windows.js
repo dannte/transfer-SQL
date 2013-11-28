@@ -129,14 +129,20 @@
                          + '<td>' + host + '</td>'
                          + '<td>' + user + '</td>'
                          + '<td>' + db + '</td>'
-                         + '<td><a href="#" style="color: red;">Edit</a>&nbsp'
-                         + '<a href="#" style="color: red;">Delete</a></td></tr>');
+                         + '<td>'
+                         + '<div class="btn-toolbar" role="toolbar">'
+                         + '<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>'
+                         + '<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span></button>'
+                         + '</div>'
+                         + '</td></tr>');
 
         $('.dropdown-menu .dropdown-menu li').each(function () {
             if ($(this).hasClass('selected')) {
                 $(this).remove();
             }});
     };
+
+
     //-----------------------------------------------------------------------------
     $(objectWLC.removeBtnId).click(function () {
         enebletInput(false);
