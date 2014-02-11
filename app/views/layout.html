@@ -1,126 +1,92 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Transfer Sql</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/style/mobile.css" rel="stylesheet" media="screen">
-    <link href="/css/bootstrap/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="/css/bootstrap/bootstrap-select.css" rel="stylesheet" media="screen">
-    <link href="/css/bootstrap/bootstrap-theme.css" rel="stylesheet" media="screen">
-    <link href="/css/style/style.css" rel="stylesheet" media="screen">
-    
-    <script src="/js/style/modernizer.js"></script>
-    <script src="/js/jquery/jquery-1.9.1.js"></script>
-    <link rel="icon" type="image/png" href="/img/style/favicon.ico">
-    <link rel="shortcut icon" href="/img/style/favicon.ico" type="image/png">
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8" />
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <title></title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <link href="/css/layout.css" rel="stylesheet">
+  <script src="/js/style/modernizer.js"></script>
+  <script src="/js/jquery/jquery-1.9.1.js"></script>
+  <script src="/js/bootstrap/bootstrap.js"></script>
+  <link rel="icon" type="image/png" href="/img/style/favicon.ico">
+  <link rel="shortcut icon" href="/img/style/favicon.ico" type="image/png">
+</head>
 
-  </head>
-  <body style="background-image:url(/img/style/Water-Background-medium-Gradient.jpg)" class="home">
-  <nav id="web-nav">
-      <div class="col-md-12">
-          <div class="btn-toolbar connect-button">
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info">
-                      {% if user_lod is defined %}
-                      <span>Active user : </span> {{user_lod}}
-                      {% endif %}
-                  </button>
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                      <span class="glyphicon glyphicon-cog"></span>
-                      <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                      <li><a href="/index.php/logout">Logout</a></li>
-                  </ul>
-              </div>
-          </div>
-          <div class="btn-toolbar connect-button">
-              <div class="btn-group">
-                  <a data-toggle="modal" href="#myModal" class="btn btn-danger">Add connections</a>
-              </div>
-          </div>
+<body>
+
+<div class="wrapper">
+
+  <header class="header">
+    <div class="col-md-9">
+      <h3><i class="fa fa-linux"></i>Transfer SQL</h3>
+    </div>
+    <div class="col-md-3">
+      <div class="row">
+        <div class="navbar-header pull-right" role="navigation">
+          <ul class="nav ace-nav">
+            <li class="grey">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <i class="fa fa-check"></i>
+                <span>Active connections</span>
+                <span class="badge badge-grey">4</span>
+              </a>
+            </li>
+            <li class="grey">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <i class="fa fa-plus-circle"></i>
+                <span>Add connect</span>
+                <span class="badge badge-grey">4</span>
+              </a>
+            </li>
+            <li class="light-blue dropdown">
+              <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                <i class="fa fa-user"></i>
+                <span class="user-info">
+									{% if user_lod is defined %}
+                    <span>{{user_lod}}</span>
+                  {% endif %}
+								</span>
+
+                <b class="caret"></b>
+              </a>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#"><i class="fa fa-cogs"></i>Settings</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="#"><i class="fa fa-thumbs-o-down"></i>logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-      <ul id="menu">
-        <li>
-            <a href="#">Home</a>
-        </li>
-        <li class="subs work-menu show-subs">
-            <a class="main-link">Work</a>
-            <ul class="link-subs">
-                <li>
-                    <a href="#">Film</a>
-                </li>
-                <li>
-                    <a href="#">Photos</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">About</a>
-        </li>
-        <li>
-            <a href="#">Blog</a>
-        </li>
-        <li>
-            <a href="#">Contact</a>
-        </li>
-      </ul>
-      <ul id="address">
-        <li>Mammoth Media</li>
-        <li>11 SW 3RD ST, APT A</li>
-        <li>LEE'S SUMMIT MO 64063</li>
-        <li></li>
-        <li>P: 816.507.4644</li>
-      </ul>
-  </nav>
-  <nav id="mobile-nav">
-      <a href="#">
-          <img class="logo" src=""/>
-      </a>
-      <img class="drop-nav" src=""/>
-  </nav>
-  <nav id="mobile-expand">
-      <img class="logo" src=""/>
-      <img class="close" src=""/>
-      <div id="hidden-nav"></div>
-      <ul id="menu">
-        <li>
-            <a href="#">Home</a>
-        </li>
-        <li>
-            <a href="#">Work</a>
-        </li>
-        <li>
-            <a href="#">About</a>
-        </li>
-        <li>
-            <a href="#">Blog</a>
-        </li>
-        <li>
-            <a href="#">Contact</a>
-        </li>
-        <ul class="work-subs">
-          <li>
-              <a href="#">Film</a>
-          </li>
-          <li>
-              <a href="#">Photos</a>
-          </li>
-        </ul>
-      </ul>
-  </nav>
-  <div id="wrap">
-    {% include 'frontend/connect_form.html' %}
-     
-    {% block content %}{% endblock %}
-  </div>
-  <div id="footer">
-        {% block footer %}{% endblock %}
-  </div><!-- #footer -->
-    <script src="/js/bootstrap/bootstrap.js"></script>
-    <script src="/js/bootstrap/bootstrap-select.js"></script>
-    <script src="/js/style/infinitescroll.js"></script>
-    <script src="/js/style/script.js"></script>
-    <script src="/js/style/modal_windows.js"></script>
-  </body>
+    </div>
+  </header><!-- .header-->
+
+  <div class="middle">
+
+    <div class="container">
+      <main class="content">
+        <strong>Content:</strong> Sed placerat accumsan ligula. Aliquam felis magna, congue quis, tempus eu, aliquam vitae, ante. Cras neque justo, ultrices at, rhoncus a, facilisis eget, nisl. Quisque vitae pede. Nam et augue. Sed a elit. Ut vel massa. Suspendisse nibh pede, ultrices vitae, ultrices nec, mollis non, nibh. In sit amet pede quis leo vulputate hendrerit. Cras laoreet leo et justo auctor condimentum. Integer id enim. Suspendisse egestas, dui ac egestas mollis, libero orci hendrerit lacus, et malesuada lorem neque ac libero. Morbi tempor pulvinar pede. Donec vel elit.
+      </main><!-- .content -->
+    </div><!-- .container-->
+
+    <aside class="left-sidebar">
+      <strong>Left Sidebar:</strong> Integer velit. Vestibulum nisi nunc, accumsan ut, vehicula sit amet, porta a, mi. Nam nisl tellus, placerat eget, posuere eget, egestas eget, dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In elementum urna a eros. Integer iaculis. Maecenas vel elit.
+    </aside><!-- .left-sidebar -->
+
+  </div><!-- .middle-->
+
+</div><!-- .wrapper -->
+
+<footer class="footer">
+  <strong>Footer:</strong> Mus elit Morbi mus enim lacus at quis Nam eget morbi. Et semper urna urna non at cursus dolor vestibulum neque enim. Tellus interdum at laoreet laoreet lacinia lacinia sed Quisque justo quis. Hendrerit scelerisque lorem elit orci tempor tincidunt enim Phasellus dignissim tincidunt. Nunc vel et Sed nisl Vestibulum odio montes Aliquam volutpat pellentesque. Ut pede sagittis et quis nunc gravida porttitor ligula.
+</footer><!-- .footer -->
+</body>
 </html>
+

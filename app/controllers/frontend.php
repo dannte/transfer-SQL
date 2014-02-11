@@ -6,6 +6,7 @@ use Silex;
 $frontend    = $app['controllers_factory'];
 $app['user'] = new \App\Models\ModelUsers($app);
 
+
 $frontend->get('/', function() use($app) {
     $path = trim($app['request']->getPathInfo(), '/');
 
@@ -18,7 +19,23 @@ $frontend->get('/', function() use($app) {
 
 $frontend->get('/login', function() use($app)
 {
-    echo 'hello';
+    $post = $app['request']->request->all();
+
+    if (empty($post)) {
+        return $app->redirect('/');
+    }
+
+    $login = $app['user']->getUserByNamePass($post['user_login'], $post['user_pass']);
+
+    if (!$login) {
+        return $app->redirect('/');
+    }
+
+    $app['session']->set('is_authorized', 1);
+    $app['session']->set('user_active', $login['login']);
+    $app['session']->set('user_id', $login['id']);
+
+    return $app['twig']->render('frontend/content.html', array('user_lod' => $app['session']->get('user_active')));
 });
 
 

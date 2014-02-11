@@ -87,7 +87,7 @@
         });
     }
 
-    var send = function(param) {
+    var send = function() {
         var frm = $(objectWLC.form);
 
         objectWLC.spinner.show();
@@ -125,10 +125,10 @@
             count = $('.lis-active-connect >tbody >tr').length + 1;
 
             table.append('<tr class="success">'
-                         + '<td>' + count + '</td>'
-                         + '<td>' + host + '</td>'
-                         + '<td>' + user + '</td>'
-                         + '<td>' + db + '</td>'
+                         + '<td class="count-data">' + count + '</td>'
+                         + '<td class="host-data">' + host + '</td>'
+                         + '<td class="user-data">' + user + '</td>'
+                         + '<td class="db-data">' + db + '</td>'
                          + '<td>'
                          + '<div class="btn-toolbar" role="toolbar">'
                          + '<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>'
@@ -164,5 +164,26 @@
         registerDb();
     });
 
+    var form_create_display_db = $('form', {id: 'form-create-display-db'});
 
+    $('#create-display-db').click(function () {
+        //console.log(form_create_display_db);
+        var arr_alements = {
+            hosts : [],
+            user  : [],
+            db    : []
+        };
+
+        $('.lis-active-connect tbody .success').find('td').each(function () {
+            if (this.className == 'host-data') {
+                arr_alements.hosts.push($(this).html());
+            } else if (this.className == 'user-data') {
+                arr_alements.user.push($(this).html());
+            } else if (this.className == 'db-data') {
+                arr_alements.db.push($(this).html());
+            }
+        });
+
+        console.log(arr_alements);
+    });
 })(jQuery);
